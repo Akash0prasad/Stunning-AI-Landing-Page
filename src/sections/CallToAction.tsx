@@ -16,12 +16,13 @@ const useRelativeMousePosition = (to: RefObject<HTMLElement>) => {
     mouseY.set(event.y - left);
   };
 
-  useEffect(() =>{
-    window.addEventListener('mousemove', updateMousePosition)
+  useEffect(() => {
+    window.addEventListener('mousemove', updateMousePosition);
     return () => {
-      window.removeEventListener('mousemove', updateMousePosition)
-    }
-  }, []); // Add to as a dependency
+      window.removeEventListener('mousemove', updateMousePosition);
+    };
+  }, [updateMousePosition]); // Add 'updateMousePosition' as a dependency
+
 
   return [mouseX, mouseY];
 };
